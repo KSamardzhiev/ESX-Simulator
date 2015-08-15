@@ -1,27 +1,24 @@
 # ESX-Simulator
-The Final Task of VMware Talent Boost Class
 
-Virtual Machine management system – Simple ESX simulator.
+***The Final Task of VMware Talent Boost Class***
+
+Virtual Machine management system â€“ Simple ESX simulator.
 
 Source code must be submitted in perforce server. Your task will be assessed in following categories: Correctness (validation of input parameters, proper exception handling), Coding Style (java docs, formatting, readability and naming conventions), Design (Interfaces, separations of concerns, proper model and patterns), Algorithms, Unit tests.
 
 The main goal is to implement a simple ESX simulator. ESX is a system that can manage Virtual Machines. Manage means that our ESX system should be able to Create, Delete, Edit and List (display) Virtual Machines. A Virtual Machine or VM is an entity similar to physical computer. For the purpose of this task we will use simplified VM, which has only unique ID, name, memory and a set of devices.
 
 Virtual Machine detailed description:
-
--> name - a character string. There may be more than one VM with a given name. Name is a string, which contains alphanumeric characters and space.
-
--> id - a character string. The id is unique for each VM and is used to identify it. One should never have more than one VM with a given id. VM id contains alphanumeric characters only.
-
--> memory - the size of the RAM of the VM. This will be measured in bytes (1KB = 1024 bytes) and should be stored in bytes.
-
-->devices - Collection of devices. Assume that a VM can have more than 1000 devices.
+----------
+*name* - a character string. There may be more than one VM with a given name. Name is a string, which contains alphanumeric characters and space.
+*id* - a character string. The id is unique for each VM and is used to identify it. One should never have more than one VM with a given id. VM id contains alphanumeric characters only.
+*memory* - the size of the RAM of the VM. This will be measured in bytes (1KB = 1024 bytes) and should be stored in bytes.
+*devices* - Collection of devices. Assume that a VM can have more than 1000 devices.
 
 A device can be one of the following two things:
 
--> Video Card
-
--> Network card
+ -**Video Card**  
+ -**Network card**
 
 A video card has the following properties:
 
