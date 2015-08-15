@@ -1,7 +1,7 @@
 # ESX-Simulator
 
 ***The Final Task of VMware Talent Boost Class***
-
+This task was the final for the VMware Talent Boost Class education course. Here is the full list of requirements for the project.
 Virtual Machine management system – Simple ESX simulator.
 
 Source code must be submitted in perforce server. Your task will be assessed in following categories: Correctness (validation of input parameters, proper exception handling), Coding Style (java docs, formatting, readability and naming conventions), Design (Interfaces, separations of concerns, proper model and patterns), Algorithms, Unit tests.
