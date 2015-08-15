@@ -1,0 +1,2 @@
+create-vm id1 'test' 1024 4
+print-vms

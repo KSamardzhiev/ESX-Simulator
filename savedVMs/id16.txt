@@ -1,0 +1,4 @@
+create-vm id16 'OSX 10' 4096 8
+add-dev id16 HardDisk_Controller id1 IDE
+add-dev id16 HardDisk id2 12345 id1
+add-dev id16 VIDEO_CARD id3 1024 2

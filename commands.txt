@@ -1,0 +1,6 @@
+create-vm id1 'test' 1024 4
+add-dev id1 NETWORK_CARD ID2 FF-FF-FF-FF-FF-FF
+add-dev id1 NETWORK_CARD ID4 FF-FF-FF-FF-FF-FF 192.168.15.181
+add-dev id1 VIDEO_CARD ID3 1024 2
+print-vms
+save-vm id1

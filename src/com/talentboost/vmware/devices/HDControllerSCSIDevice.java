@@ -1,0 +1,170 @@
+package com.talentboost.vmware.devices;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.talentboost.vmware.interfaces.IDevice;
+import com.talentboost.vmware.interfaces.IHDController;
+
+/**
+ * This class implements IHDController interface and IDevice interface and
+ * provide logic of SCSI Hard Disk Controller device behavior in the
+ * ESXSimulator.
+ * 
+ * @author KSamardzhiev
+ *
+ */
+public class HDControllerSCSIDevice implements IHDController, IDevice {
+	/**
+	 * String variable that stores the general type of the device.
+	 */
+	private final String TYPE = "HardDisk_Controller";
+	/**
+	 * String variable that stores the specific type of the device.
+	 */
+	private final String TYPE_CONTROLLER = "SCSI";
+	/**
+	 * String variable that stores the ID of the device.
+	 */
+	private final String ID;
+	/**
+	 * Byte variable that stores the maximum number of Hard Disks that can be
+	 * attached to this type of hard disk controller.
+	 */
+	private final byte MAX_NUMBER_HARD_DISK = 16;
+
+	/**
+	 * Map data structure that stores the attached Hard Disks to this device.
+	 * The key is the id of particular hard disk and the value is instance of
+	 * HardDiskDevice class.
+	 */
+	private Map<String, HardDiskDevice> hardDisks = new HashMap<String, HardDiskDevice>();
+
+	/**
+	 * This constructor create an instance of HDControllerSCSIDevice class with
+	 * one arguments (id). It invokes 1 check methods that check the parameter
+	 * (id) for correctness. If this check methods fails, whole initialization
+	 * fails too.
+	 * 
+	 * @param id
+	 *            String ID of particular HDControllerSCSI device.
+	 */
+	public HDControllerSCSIDevice(String id) {
+		checkID(id);
+		this.ID = id;
+	}
+
+	/**
+	 * This method check if the ID of the HDControllerSCSI device is
+	 * alphanumeric. In case this check fail, IllegalArgumentException is
+	 * thrown.
+	 * 
+	 * @param id
+	 *            String ID of the HDControllerSCSI device.
+	 * 
+	 * @throws IllegalArgumentException
+	 */
+	private void checkID(String id) {
+		if (!id.matches("[A-Za-z0-9]+")) {
+			throw new IllegalArgumentException("The ID of the device should be only alphanumerical");
+		}
+	}
+
+	/**
+	 * This method put particular HardDiskDevice object to the map with all
+	 * attached hard disks. It invokes 2 check method that check if there is no
+	 * attached hard disk with this id already and if there is free space for
+	 * more hard disks (SCSI hard disk controller allow only 16 hard disk
+	 * attached to it). If any of this checks fail, whole adding process fail
+	 * too.
+	 * 
+	 * @param hardDisk
+	 *            HardDiskDevice object which is wanted to be attached to this
+	 *            HDController device.
+	 * 
+	 */
+	@Override
+	public String addHardDisk(HardDiskDevice hardDisk) {
+		checkIDHardDisk(hardDisk.getID());
+		checkNumberOfHardDisks();
+		this.hardDisks.put(hardDisk.getID(), hardDisk);
+		return "Hard disk is added.";
+	}
+
+	/**
+	 * This method check if there is no attached hard disk with same id already.
+	 * If this method fail, it thrown IllegalArgumentException.
+	 * 
+	 * @param hardDiskID
+	 *            - HardDiskDevice that is wanted to be attached to this
+	 *            HDController.
+	 * @throws IllegalArgumentException
+	 */
+	private void checkIDHardDisk(String hardDiskID) {
+		if (this.hardDisks.containsKey(hardDiskID)) {
+			throw new IllegalArgumentException("Hard disk with this ID already existing.");
+		}
+
+	}
+
+	/**
+	 * This method check if there is free space for more hard disks (SCSI hard
+	 * disk controller allow only 16 hard disk attached to it). If this method
+	 * fail, it thrown IllegalArgumentException.
+	 * 
+	 * @param hardDiskID
+	 *            - HardDiskDevice that is wanted to be attached to this
+	 *            HDController device.
+	 * @throws IllegalArgumentException
+	 */
+	private void checkNumberOfHardDisks() {
+		if (this.hardDisks.size() == this.MAX_NUMBER_HARD_DISK) {
+			throw new IllegalArgumentException("Hard disk controller have max number of hard disk attached");
+		}
+
+	}
+
+	/**
+	 * @return String general type of the HDControlerSCSI device.
+	 */
+	@Override
+	public String getType() {
+		return this.TYPE;
+	}
+
+	/**
+	 * @return String ID of the HDControlerSCSI device.
+	 */
+	@Override
+	public String getID() {
+		return this.ID;
+	}
+
+	/**
+	 * @return String specific type of the HDControlerSCSI device.
+	 */
+	@Override
+	public String getControllerType() {
+		return this.TYPE_CONTROLLER;
+	}
+
+	/**
+	 * @return String representation of HDControllerSCSIDevice object.
+	 */
+	@Override
+	public String toString() {
+		String result = String.format("%s %s %s", this.TYPE, this.ID, this.TYPE_CONTROLLER);
+		return result;
+	}
+
+	/**
+	 * @return Collection of all Hard Disk devices that are attached to this
+	 *         HDController device.
+	 */
+	@Override
+	public Collection<HardDiskDevice> getHardDisks() {
+		return this.hardDisks.values();
+	}
+
+}

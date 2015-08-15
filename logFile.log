@@ -1,0 +1,26 @@
+2015-08-15 14:26:04,811 DEBUG [main] - log4j.properties.processLine 71 - Missing specifications!
+2015-08-15 14:26:20,670 DEBUG [main] - log4j.properties.processLine 71 - ID	Name	Memory	CPUs
+-----------------------------------------------
+2015-08-15 14:32:35,163 DEBUG [main] - log4j.properties.processLine 82 - Virtual machine is created
+2015-08-15 14:32:35,167 DEBUG [main] - log4j.properties.processLine 82 - This device is added
+2015-08-15 14:32:35,168 DEBUG [main] - log4j.properties.processLine 82 - Hard disk is added.
+2015-08-15 14:32:35,169 DEBUG [main] - log4j.properties.processLine 82 - This device is added
+2015-08-15 14:32:45,940 DEBUG [main] - log4j.properties.processLine 71 - Err: Unknown command print-vm
+2015-08-15 14:32:49,912 DEBUG [main] - log4j.properties.processLine 71 - ID	Name	Memory	CPUs
+id16	OSX 10	4096	8
+-----------------------------------------------
+2015-08-15 14:33:12,852 DEBUG [main] - log4j.properties.processLine 82 - The process of reading is started
+2015-08-15 14:33:12,855 DEBUG [Thread-0] - log4j.properties.processLine 82 - Virtual machine is created
+2015-08-15 14:33:12,855 DEBUG [Thread-0] - log4j.properties.processLine 82 - This device is added
+2015-08-15 14:33:12,856 DEBUG [Thread-0] - log4j.properties.processLine 82 - Hard disk is added.
+2015-08-15 14:33:12,856 DEBUG [Thread-0] - log4j.properties.processLine 82 - This device is added
+2015-08-15 14:33:25,491 DEBUG [main] - log4j.properties.processLine 71 - ID	Name	Memory	CPUs
+id16	OSX 10	4096	4
+-----------------------------------------------
+2015-08-15 14:35:18,348 DEBUG [main] - log4j.properties.processLine 57 - ID	Name	Memory	CPUs
+-----------------------------------------------
+2015-08-15 14:36:25,168 DEBUG [main] - log4j.properties.processLine 68 - Virtual machine is created
+2015-08-15 14:36:25,172 DEBUG [main] - log4j.properties.processLine 68 - This device is added
+2015-08-15 14:36:25,174 DEBUG [main] - log4j.properties.processLine 68 - Hard disk is added.
+2015-08-15 14:36:25,174 DEBUG [main] - log4j.properties.processLine 68 - This device is added
+2015-08-15 14:36:27,953 DEBUG [main] - log4j.properties.processLine 57 - All virtual machines are saved.
