@@ -91,31 +91,51 @@ Command Example:
 	Id         Name       Memory
     vmid1   My UbuntuVm   512MB
 
-Task 1:
+#**Task 1:**
+
 a) Extend Network card with additional property –IP. Do the necessary changes to a network device spec so that we can pass the IP address as additional argument when we add new network device. You can assume that the IP is only of type IPv4.
+
 b) Your code should validate the IP and MAC addresses of network card.
+
 c) Modify your program so that it can read commands from a file.
+
 d) Command help. You should provide a help command which list all commands and short description for each command.
-Task 2:
+
+#**Task 2:**
 a) Your ESX simulator should be able to save its state. When you stop the ESX all the VMs and their configuration should be persisted on the file system. When you start the ESX simulator, it should read the persisted data from the file system and should restore the VMs. Each VM should be stored in a separate file and filename must be the same as vm_id. All VM files should be stored in one directory.
+
 b) Add the following 2 commands to the supported set of operations: save-vm and read-vm. Each of these commands takes a single argument – the id of the VM to be stored or read from the file system.
- save-vm <id> - Saves the VM with the specified id on the file system.
- read-vm <id> - Reads the configuration of the VM with the specified id from the file system and replaces the current settings.
+
+	save-vm `<id>` - Saves the VM with the specified id on the file system.
+
+	read-vm `<id>` - Reads the configuration of the VM with the specified id from the file system and replaces the current settings.
+	
 c) Extend the ESX simulator to allow reading commands from multiple files. There should be a separate thread for each input file.
-Task 3:
+
+#**Task 3:**
 a) Add stop command. This command should stop your program and should save the state of ESX simulator. See Task 2a.
-b) Your VM should be extended to support the following new configuration – number of CPUs, which should be between 1 and 8. You should update create-vm and edit-vm commands to have one additional argument - the number of CPUs. All the existing VMs should be modified to have one CPU.
-c) Extend the list of supported VM devices with new device type - HardDisk Controller. Add-dev command should be updated to handle the new device. There are 2 types of HardDisc Controller – IDEand SCSI.
+
+b) Your VM should be extended to support the following new  configuration – number of CPUs, which should be between 1 and 8. You should update create-vm and edit-vm commands to have one additional argument - the number of CPUs. All the existing VMs should be modified to have one CPU.
+
+c) Extend the list of supported VM devices with new device type - **HardDisk Controller**. Add-dev command should be updated to handle the new device. There are 2 types of HardDisc Controller – IDE and SCSI.
 IDE controller supports maximum 4 disks while SCSI controller supports 16 Hard Disks. A VM can have maximum 1 IDE controller and maximum 4 SCSI controllers.
+
 A HardDisk Controller has the following properties:
-· id - a character string that is unique among all devices for the VM. May only contain alphanumeric characters.
-· type – one of the two values: IDE or SCSI
+
+- *id* - a character string that is unique among all devices for the VM. May only contain alphanumeric characters.
+- *type* – one of the two values: IDE or SCSI
+
 A device spec for a HardDisk Controller will look like this:
- <dev_id> <controller_type> - Controller_type is one of the two Strings IDE or SCSI.
-Also add another device type - Hard Disk(also extend add-dev to support this device type). A hard disk has the following properties:
-* id - a character string that is unique among all devices for the VM. May only contain alphanumeric characters.
-* size – hard disk size in bytes. Maximum size of a hard disk is 100 TB(100 * 1024 * 1024 * 1024 * 1024 bytes)
-* hard disk controller id - id of the controller that the hard disk is attached to. Should be a valid id of a hard disk controller that already exists.
+
+`<dev_id> <controller_type>` - Controller_type is one of the two Strings **IDE** or **SCSI**.
+
+Also add another device type - **Hard Disk**(also extend add-dev to support this device type). A hard disk has the following properties:
+
+- *id* - a character string that is unique among all devices for the VM. May only contain alphanumeric characters.
+- *size* – hard disk size in bytes. Maximum size of a hard disk is 100 TB(100 * 1024 * 1024 * 1024 * 1024 bytes)
+- *hard disk controller id* - id of the controller that the hard disk is attached to. Should be a valid id of a hard disk controller that already exists.
+
+
 A device spec for a HardDisk will look like this:
- <dev_id> <size> <controller_id> -
+`<dev_id> <size> <controller_id>` -
 Deleting a HardDisk Controller, deletes all the hard disks attached to it.
