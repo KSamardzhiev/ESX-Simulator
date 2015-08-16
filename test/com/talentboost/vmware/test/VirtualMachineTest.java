@@ -284,7 +284,7 @@ public class VirtualMachineTest {
 		byte cpu = 2;
 		String failResult = vm.setNameMemoryCPUs(name, newMemory, cpu);
 		assertEquals(
-				"The memory of the virtual machine can not be negative or zero value",
+				"The memory of the virtual machine can not be negative or zero value.",
 				failResult);
 	}
 
@@ -295,7 +295,7 @@ public class VirtualMachineTest {
 		byte cpu = 2;
 		String failResult = vm.setNameMemoryCPUs(name, newMemory, cpu);
 		assertEquals(
-				"The memory of the virtual machine can not be negative or zero value",
+				"The memory of the virtual machine can not be negative or zero value.",
 				failResult);
 	}
 

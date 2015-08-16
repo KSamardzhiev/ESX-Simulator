@@ -6,6 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.talentboost.vmware.ESXSimulator;
+import com.talentboost.vmware.ReturnMessage;
 import com.talentboost.vmware.VirtualMachine;
 import com.talentboost.vmware.interfaces.ICommand;
 
@@ -24,7 +25,7 @@ public class CreateVirtualMachineCmd implements ICommand {
 	/**
 	 * String variable that stores information about the command.
 	 */
-	private final String INFO = "create-vm - This command provide ability to create new virtual machine\n\n";
+	private final String INFO = ReturnMessage.getMessage("MSG_CREATE_VM_INFO");
 
 	/**
 	 * @return String name of command "create-vm".
@@ -61,10 +62,10 @@ public class CreateVirtualMachineCmd implements ICommand {
 	private String authorizeInput(String args) {
 		String[] argsArray = this.splitArgs(args);
 		if (argsArray.length < 4) {
-			return "Missing specifications!";
+			return ReturnMessage.getMessage("MSG_CREATE_VM_MISSING_SPECIFICATIONS");
 		}
 		if (ESXSimulator.VMsStorage.containsKey(argsArray[0])) {
-			return "Virtual Machine with this ID already existing!";
+			return ReturnMessage.getMessage("MSG_CREATE_VM_EXISTING_VIRTUAL_MACHINE");
 		}
 		try {
 			ESXSimulator.VMsStorage.put(argsArray[0], new VirtualMachine(argsArray[0], argsArray[1],
@@ -72,7 +73,7 @@ public class CreateVirtualMachineCmd implements ICommand {
 		} catch (IllegalArgumentException e) {
 			return e.getMessage();
 		}
-		return "Virtual machine is created";
+		return ReturnMessage.getMessage("MSG_CREATE_VM_SUCCESS");
 	}
 
 	/**

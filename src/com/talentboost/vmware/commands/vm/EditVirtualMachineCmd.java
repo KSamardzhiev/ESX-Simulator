@@ -6,6 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.talentboost.vmware.ESXSimulator;
+import com.talentboost.vmware.ReturnMessage;
 import com.talentboost.vmware.interfaces.ICommand;
 
 /**
@@ -26,7 +27,7 @@ public class EditVirtualMachineCmd implements ICommand {
 	/**
 	 * String variable that stores information about the command.
 	 */
-	private final String INFO = "edit-vm - This command provide ability to edit particular virtual machine.\n\n";
+	private final String INFO = ReturnMessage.getMessage("MSG_EDIT_VM_INFO");
 
 	/**
 	 * @return String name of command "edit-vm".
@@ -65,7 +66,7 @@ public class EditVirtualMachineCmd implements ICommand {
 		String[] argsArray = this.splitArgs(args);
 
 		if (!ESXSimulator.VMsStorage.containsKey(argsArray[0])) {
-			return "Virtual machine with this ID doesn't exist";
+			return ReturnMessage.getMessage("MSG_EDIT_VM_ERROR_NOT_EXISTING_ID");
 		}
 
 		return ESXSimulator.VMsStorage.get(argsArray[0]).setNameMemoryCPUs(argsArray[1], Integer.parseInt(argsArray[2]),

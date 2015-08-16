@@ -1,4 +1,4 @@
-package com.talentboost.vmware.test;
+package com.talentboost.vmware.commands.devices;
 
 import static org.junit.Assert.*;
 
@@ -61,7 +61,7 @@ public class AddDeviceCmdTest {
 		String failResult = addDevice
 				.execute("id1 HardDisk_Controller id1234 IDE");
 		assertEquals(
-				"This virtual machine has max number of provided hard disk controllers of this type",
+				"This virtual machine has max number of provided hard disk controllers of this type.",
 				failResult);
 	}
 
@@ -87,7 +87,7 @@ public class AddDeviceCmdTest {
 				.execute("id1 HardDisk_Controller 5id SCSI");
 
 		assertEquals(
-				"This virtual machine has max number of provided hard disk controllers of this type",
+				"This virtual machine has max number of provided hard disk controllers of this type.",
 				failResult);
 	}
 

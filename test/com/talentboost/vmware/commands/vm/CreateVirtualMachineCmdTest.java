@@ -1,4 +1,4 @@
-package com.talentboost.vmware.test;
+package com.talentboost.vmware.commands.vm;
 
 import static org.junit.Assert.*;
 
@@ -54,7 +54,7 @@ public class CreateVirtualMachineCmdTest {
 		String result = create.execute("id1-1 'windows 8' 1024 4");
 
 		assertEquals(
-				"The ID of the virtual machine could be only alphanumeric",
+				"The ID of the virtual machine could be only alphanumeric.",
 				result);
 	}
 
@@ -72,7 +72,7 @@ public class CreateVirtualMachineCmdTest {
 		String result = create.execute("id756 'windows8' -1024 4");
 
 		assertEquals(
-				"The memory of the virtual machine can not be negative or zero value",
+				"The memory of the virtual machine can not be negative or zero value.",
 				result);
 	}
 	
@@ -81,7 +81,7 @@ public class CreateVirtualMachineCmdTest {
 		String result = create.execute("id756 'windows8' 1024 0");
 
 		assertEquals(
-				"The number of CPUs is invalid. It should be in range [1-8]",
+				"The number of CPUs is invalid. It should be in range [1-8].",
 				result);
 	}
 

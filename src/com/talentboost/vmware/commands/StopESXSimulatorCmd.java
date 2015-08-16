@@ -1,6 +1,7 @@
 package com.talentboost.vmware.commands;
 
 import com.talentboost.vmware.ESXSimulator;
+import com.talentboost.vmware.ReturnMessage;
 import com.talentboost.vmware.VirtualMachine;
 import com.talentboost.vmware.commands.vm.SaveVirtualMachineCmd;
 import com.talentboost.vmware.interfaces.ICommand;
@@ -23,7 +24,7 @@ public class StopESXSimulatorCmd implements ICommand {
 	/**
 	 * String variable that stores information about the command.
 	 */
-	private final String INFO = "stop - This command provide ability to stop the ESXSimulator and save its state in files (save available virtual machines).";
+	private final String INFO = ReturnMessage.getMessage("MSG_STOP_ESX_INFO");
 
 	/**
 	 * @return String name of command "stop".
@@ -43,8 +44,6 @@ public class StopESXSimulatorCmd implements ICommand {
 	@Override
 	public String execute(String args) {
 
-		// implement exit of simulator and save everything && read everything at
-		// start
 		SaveVirtualMachineCmd saving = new SaveVirtualMachineCmd();
 
 		for (VirtualMachine vm : ESXSimulator.VMsStorage.values()) {
@@ -53,7 +52,7 @@ public class StopESXSimulatorCmd implements ICommand {
 				return result;
 			}
 		}
-		return "All virtual machines are saved.";
+		return ReturnMessage.getMessage("MSG_STOP_ESX_SUCCESS");
 	}
 
 	/**

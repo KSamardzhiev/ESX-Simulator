@@ -3,6 +3,7 @@ package com.talentboost.vmware.commands.vm;
 import java.io.File;
 
 import com.talentboost.vmware.ESXSimulator;
+import com.talentboost.vmware.ReturnMessage;
 import com.talentboost.vmware.interfaces.ICommand;
 
 /**
@@ -21,7 +22,7 @@ public class DeleteVirtualMachineCmd implements ICommand {
 	/**
 	 * String variable that stores information about the command.
 	 */
-	private final String INFO = "delete-vm - This command provide ability to delete particular virtual machine\n\n";
+	private final String INFO = ReturnMessage.getMessage("MSG_DELETE_VM_INFO");
 
 	/**
 	 * @return String name of command "delete-vm".
@@ -58,11 +59,11 @@ public class DeleteVirtualMachineCmd implements ICommand {
 	 */
 	private String authorizeInput(String args) {
 		if (!ESXSimulator.VMsStorage.containsKey(args)) {
-			return "There is no virtual machine with this ID (ID: " + args + ")";
+			return ReturnMessage.getMessage("MSG_DELETE_VM_NOT_EXISTING_ID");
 		}
 		ESXSimulator.VMsStorage.remove(args);
 		deleteFile(args);
-		return "Virtual machine with ID: " + args + " is deleted!";
+		return ReturnMessage.getMessage("MSG_DELETE_VM_SUCCESS");
 	}
 
 	/**

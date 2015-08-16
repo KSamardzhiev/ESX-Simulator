@@ -1,6 +1,7 @@
 package com.talentboost.vmware.commands;
 
 import com.talentboost.vmware.ESXSimulator;
+import com.talentboost.vmware.ReturnMessage;
 import com.talentboost.vmware.interfaces.ICommand;
 
 /**
@@ -20,7 +21,7 @@ public class HelpCmd implements ICommand {
 	/**
 	 * String variable that stores information about the command.
 	 */
-	private final String INFO = "help - This command list all available commands and short description of each of them.\n\n";
+	private final String INFO = ReturnMessage.getMessage("MSG_HELP_INFO");
 
 	/**
 	 * @return String name of command "help".

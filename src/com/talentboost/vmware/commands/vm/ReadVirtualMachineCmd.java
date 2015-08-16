@@ -1,6 +1,7 @@
 package com.talentboost.vmware.commands.vm;
 
 import com.talentboost.vmware.ReadingThread;
+import com.talentboost.vmware.ReturnMessage;
 import com.talentboost.vmware.interfaces.ICommand;
 
 /**
@@ -19,7 +20,7 @@ public class ReadVirtualMachineCmd implements ICommand {
 	/**
 	 * This variable stores information about the command.
 	 */
-	private final String INFO = "read-vm - This command provide ability to read some virtual machine and save it.";
+	private final String INFO = ReturnMessage.getMessage("MSG_READ_VM_INFO");
 
 	/**
 	 * @return String of the name of command "read-vm".
@@ -45,7 +46,7 @@ public class ReadVirtualMachineCmd implements ICommand {
 		ReadingThread read = new ReadingThread(args);
 		Thread thread = new Thread(read);
 		thread.start();
-		return "The process of reading is started";
+		return ReturnMessage.getMessage("MSG_READ_VM_STARTED");
 	}
 
 	/**

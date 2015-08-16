@@ -1,4 +1,4 @@
-package com.talentboost.vmware.test;
+package com.talentboost.vmware.commands.vm;
 
 import static org.junit.Assert.*;
 
@@ -38,15 +38,14 @@ public class DeleteVirtualMachineCmdTest {
 	public void testExecutionNegative() {
 		String result = delete.execute(vm2.getID());
 		assertEquals(
-				"There is no virtual machine with this ID (ID: " + vm2.getID()
-						+ ")", result);
+				"There is no virtual machine with this ID.", result);
 	}
 
 	@Test
 	public void testExecutionReturnResult() {
 
 		String result = delete.execute(vm.getID());
-		assertEquals("Virtual machine with ID: " + vm.getID() + " is deleted!",
+		assertEquals("Virtual machine is deleted.",
 				result);
 	}
 
@@ -54,7 +53,7 @@ public class DeleteVirtualMachineCmdTest {
 	public void testExecutionDeleteFileToo() {
 
 		String result = delete.execute(vm.getID());
-		assertEquals("Virtual machine with ID: " + vm.getID() + " is deleted!",
+		assertEquals("Virtual machine is deleted.",
 				result);
 	}
 }

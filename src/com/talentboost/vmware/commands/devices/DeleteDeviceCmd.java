@@ -1,6 +1,7 @@
 package com.talentboost.vmware.commands.devices;
 
 import com.talentboost.vmware.ESXSimulator;
+import com.talentboost.vmware.ReturnMessage;
 import com.talentboost.vmware.interfaces.ICommand;
 
 /**
@@ -20,7 +21,7 @@ public class DeleteDeviceCmd implements ICommand {
 	/**
 	 * String variable that stores information about the command.
 	 */
-	private final String INFO = "delete-dev - This command provide ability to delete particular device on particular virtual machine\n\n";
+	private final String INFO = ReturnMessage.getMessage("MSG_DELETE_DEVICE_INFO");
 
 	/**
 	 * @return String name of command "delete-dev".
@@ -57,7 +58,7 @@ public class DeleteDeviceCmd implements ICommand {
 	private String authorizeInput(String args) {
 		String[] argsArray = args.trim().split(ICommand.PATTERN_WITHOUT_NAME_ARG);
 		if (!ESXSimulator.VMsStorage.containsKey(argsArray[0])) {
-			return "Virtual machine with this ID doesn't exist";
+			return ReturnMessage.getMessage("MSG_DELETE_DEVICE_ERROR_NOT_EXISTING_ID");
 		}
 
 		try {
@@ -65,7 +66,7 @@ public class DeleteDeviceCmd implements ICommand {
 		} catch (IllegalArgumentException e) {
 			return e.getMessage();
 		}
-		return "The device is deleted!";
+		return ReturnMessage.getMessage("MSG_DELETE_DEVICE_SUCCESS");
 	}
 
 	/**

@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import com.talentboost.vmware.ESXSimulator;
+import com.talentboost.vmware.ReturnMessage;
 import com.talentboost.vmware.interfaces.ICommand;
 
 /**
@@ -26,7 +27,7 @@ public class StartESXSimulatorCmd implements ICommand {
 	/**
 	 * String variable that stores information about the command.
 	 */
-	private final String INFO = "start - This command is used only when ESXSimulator start. It build all saved virtual machine";
+	private final String INFO = ReturnMessage.getMessage("MSG_START_ESX_INFO");
 
 	/**
 	 * @return String name of command "start".

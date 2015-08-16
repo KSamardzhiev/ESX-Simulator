@@ -169,7 +169,7 @@ public class VirtualMachine {
 	public void addDevice(IDevice device) {
 		if (this.devices.containsKey(device.getID())) {
 			throw new IllegalArgumentException(
-					"This virtual machine contain device with the same ID! Try again with different device.");
+					ReturnMessage.getMessage("MSG_VIRTUAL_MACHINE_ADD_DELETE_DEVICE_ERROR_ID"));
 		}
 
 		if (device.getType().equals("HardDisk_Controller")) {
@@ -208,7 +208,7 @@ public class VirtualMachine {
 	private void chechNumberSCSI() {
 		if (this.numberSCSI == this.MAX_SCSI_NUMBER) {
 			throw new IllegalArgumentException(
-					"This virtual machine has max number of provided hard disk controllers of this type");
+					ReturnMessage.getMessage("MSG_VIRTUAL_MACHINE_ADD_DEVICE_ERROR_OVER_MAX_HARD_DISKS"));
 		}
 	}
 
@@ -220,7 +220,7 @@ public class VirtualMachine {
 	private void checkNumberIDE() {
 		if (this.numberIDE == this.MAX_IDE_NUMBER) {
 			throw new IllegalArgumentException(
-					"This virtual machine has max number of provided hard disk controllers of this type");
+					ReturnMessage.getMessage("MSG_VIRTUAL_MACHINE_ADD_DEVICE_ERROR_OVER_MAX_HARD_DISKS"));
 		}
 
 	}
@@ -237,7 +237,7 @@ public class VirtualMachine {
 	public void deleteDevice(String deviceID) {
 		if (!this.devices.containsKey(deviceID)) {
 			throw new IllegalArgumentException(
-					"This virtual machine didn't contain device with this ID! Try again with different device.");
+					ReturnMessage.getMessage("MSG_VIRTUAL_MACHINE_ADD_DELETE_DEVICE_ERROR_ID"));
 		}
 
 		this.devices.remove(deviceID);
@@ -290,7 +290,7 @@ public class VirtualMachine {
 	private void checkMemory(int memory) {
 		if (memory <= 0) {
 			throw new IllegalArgumentException(
-					"The memory of the virtual machine can not be negative or zero value");
+					ReturnMessage.getMessage("MSG_VIRTUAL_MACHINE_MEMORY_ERROR_NOT_IN_RANGE"));
 		}
 	}
 
@@ -305,7 +305,7 @@ public class VirtualMachine {
 	private void checkCPUs(byte CPUs) {
 		if (CPUs < 1 || CPUs > 8) {
 			throw new IllegalArgumentException(
-					"The number of CPUs is invalid. It should be in range [1-8]");
+					ReturnMessage.getMessage("MSG_VIRTUAL_MACHINE_CPUS_ERROR_NOT_IN_RANGE"));
 		}
 	}
 
@@ -320,7 +320,7 @@ public class VirtualMachine {
 	private void checkID(String id) {
 		if (!id.matches("[A-Za-z0-9]+")) {
 			throw new IllegalArgumentException(
-					"The ID of the virtual machine could be only alphanumeric");
+					ReturnMessage.getMessage("MSG_VIRTUAL_MACHINE_ALFANUMBERIC_ERROR_ID"));
 		}
 	}
 }

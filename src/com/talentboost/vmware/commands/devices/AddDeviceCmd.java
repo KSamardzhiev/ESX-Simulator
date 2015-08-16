@@ -1,6 +1,7 @@
 package com.talentboost.vmware.commands.devices;
 
 import com.talentboost.vmware.ESXSimulator;
+import com.talentboost.vmware.ReturnMessage;
 import com.talentboost.vmware.devices.DeviceFactory;
 import com.talentboost.vmware.devices.HardDiskDevice;
 import com.talentboost.vmware.interfaces.ICommand;
@@ -25,8 +26,7 @@ public class AddDeviceCmd implements ICommand {
 	/**
 	 * String variable that stores information about the command.
 	 */
-	private final String INFO = "add-dev - This command provide ability to add new device to particular virtual machine.\n"
-			+ "<vm-id> <dev_type> <device_spec>\n\n";
+	private final String INFO = ReturnMessage.getMessage("MSG_ADD_DEVICE_INFO");
 
 	/**
 	 * @return String name of command "add-dev".
@@ -77,7 +77,7 @@ public class AddDeviceCmd implements ICommand {
 
 		String[] argsArray = args.trim().split(ICommand.PATTERN_WITHOUT_NAME_ARG);
 		if (!ESXSimulator.VMsStorage.containsKey(argsArray[0])) {
-			return "Virtual machine with this ID doesn't exist";
+			return ReturnMessage.getMessage("MSG_ADD_DEVICE_ERROR_NOT_EXISTING_ID");
 		}
 
 		DeviceFactory factory = new DeviceFactory();
@@ -86,15 +86,13 @@ public class AddDeviceCmd implements ICommand {
 			try {
 				IHDController controller = (IHDController) ESXSimulator.VMsStorage.get(argsArray[0]).getDevices()
 						.get(argsArray[4]);
-				// HardDiskDevice hardDisk = new HardDiskDevice(argsArray[2],
-				// argsArray[4], Long.parseLong(argsArray[3]));
 				HardDiskDevice hardDisk = (HardDiskDevice) factory.getDevice(argsArray[1], argsArray);
 				controller.addHardDisk(hardDisk);
 			} catch (IllegalArgumentException e) {
 				return e.getMessage();
 			}
 
-			return "Hard disk is added.";
+			return ReturnMessage.getMessage("MSG_ADD_DEVICE_HARD_DISK_SUCCESS");
 		}
 
 		IDevice device = factory.getDevice(argsArray[1], argsArray);
@@ -103,8 +101,7 @@ public class AddDeviceCmd implements ICommand {
 		} catch (IllegalArgumentException e) {
 			return e.getMessage();
 		}
-
-		return "This device is added";
+		return ReturnMessage.getMessage("MSG_ADD_DEVICE_SUCCESS");
 
 	}
 

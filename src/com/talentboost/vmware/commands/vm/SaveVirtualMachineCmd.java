@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import com.talentboost.vmware.ESXSimulator;
+import com.talentboost.vmware.ReturnMessage;
 import com.talentboost.vmware.VirtualMachine;
 import com.talentboost.vmware.devices.HardDiskDevice;
 import com.talentboost.vmware.interfaces.ICommand;
@@ -26,7 +27,7 @@ public class SaveVirtualMachineCmd implements ICommand {
 	/**
 	 * String variable that stores information about the command.
 	 */
-	private final String INFO = "save-vm - This command provide ability to save virtual machine in the file system\n\n";
+	private final String INFO = ReturnMessage.getMessage("MSG_SAVE_VM_INFO");
 
 	/**
 	 * @return String name of command "save-vm".
@@ -62,7 +63,7 @@ public class SaveVirtualMachineCmd implements ICommand {
 	 */
 	private String authorizeInput(String args) {
 		if (!ESXSimulator.VMsStorage.containsKey(args)) {
-			return "There is no vm with this id!";
+			return ReturnMessage.getMessage("MSG_SAVE_VM_ERROR_NOT_EXISTING_ID");
 		}
 		VirtualMachine vm = ESXSimulator.VMsStorage.get(args);
 
@@ -77,7 +78,7 @@ public class SaveVirtualMachineCmd implements ICommand {
 		try {
 			file.createNewFile();
 		} catch (IOException e) {
-			return "Failed to make new file!";
+			return ReturnMessage.getMessage("MSG_SAVE_VM_ERROR_CREATING_NEW_FILE");
 		}
 
 		try (FileWriter writer = new FileWriter(file)) {
@@ -93,10 +94,10 @@ public class SaveVirtualMachineCmd implements ICommand {
 
 			writer.write(result.toString());
 		} catch (IOException e) {
-			return "Problem with writing in the file.";
+			return ReturnMessage.getMessage("MSG_SAVE_VM_ERROR_WRITING_IN_FILE");
 		}
 
-		return "The virtual machine is saved.";
+		return ReturnMessage.getMessage("MSG_SAVE_VM_SUCCESS");
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package com.talentboost.vmware.test;
+package com.talentboost.vmware.commands.vm;
 
 import static org.junit.Assert.*;
 

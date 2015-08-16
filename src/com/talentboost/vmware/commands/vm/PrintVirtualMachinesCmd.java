@@ -1,6 +1,7 @@
 package com.talentboost.vmware.commands.vm;
 
 import com.talentboost.vmware.ESXSimulator;
+import com.talentboost.vmware.ReturnMessage;
 import com.talentboost.vmware.VirtualMachine;
 import com.talentboost.vmware.interfaces.ICommand;
 
@@ -21,7 +22,7 @@ public class PrintVirtualMachinesCmd implements ICommand {
 	/**
 	 * String variable that stores information about the command.
 	 */
-	private final String INFO = "print-vms - This command prints a human-friendly summary of all the current virtual machines\n\n";
+	private final String INFO = ReturnMessage.getMessage("MSG_PRINT_VMS_INFO");
 
 	/**
 	 * @return String name of command "print-vms".

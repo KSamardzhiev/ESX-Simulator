@@ -1,4 +1,4 @@
-package com.talentboost.vmware.test;
+package com.talentboost.vmware.commands.devices;
 
 import static org.junit.Assert.*;
 
@@ -40,7 +40,7 @@ public class DeleteDeviceCmdTest {
 	@Test
 	public void testExecuteDeleteNetworkCardDevice() {
 		String result = delete.execute("id1 id12");
-		assertEquals("The device is deleted!", result);
+		assertEquals("The device is deleted", result);
 	}
 
 	@Test
@@ -58,43 +58,43 @@ public class DeleteDeviceCmdTest {
 	@Test
 	public void testExecuteDeleteNetworkCardDeviceNegativeTest() {
 		String failResult = delete.execute("id1 id123");
-		assertNotEquals("The device is deleted!", failResult);
+		assertNotEquals("The device is deleted", failResult);
 	}
 
 	@Test
 	public void testExecuteDeleteVideoCardDevice() {
 		String result = delete.execute("id1 id13");
-		assertEquals("The device is deleted!", result);
+		assertEquals("The device is deleted", result);
 	}
 
 	@Test
 	public void testExecuteDeleteVideoCardDeviceNegativeTest() {
 		String failResult = delete.execute("id1 id123");
-		assertNotEquals("The device is deleted!", failResult);
+		assertNotEquals("The device is deleted", failResult);
 	}
 
 	@Test
 	public void testExecuteDeleteHDControllerIDEDevice() {
 		String result = delete.execute("id1 idHDIDE");
-		assertEquals("The device is deleted!", result);
+		assertEquals("The device is deleted", result);
 	}
 
 	@Test
 	public void testExecuteDeleteHDContorellerIDENegativeTest() {
 		String result = delete.execute("id1 idHDIDE1");
-		assertNotEquals("The device is deleted!", result);
+		assertNotEquals("The device is deleted", result);
 	}
 
 	@Test
 	public void testExecuteDeleteHDControllerSCSIDevice() {
 		String result = delete.execute("id1 idHDSCSI");
-		assertEquals("The device is deleted!", result);
+		assertEquals("The device is deleted", result);
 	}
 
 	@Test
 	public void testExecuteDeleteHDControllerSCSIDeviceNegativeTest() {
 		String result = delete.execute("id1 idHDSCSI1");
-		assertNotEquals("The device is deleted!", result);
+		assertNotEquals("The device is deleted", result);
 	}
 
 }
