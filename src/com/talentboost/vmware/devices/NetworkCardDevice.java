@@ -1,5 +1,6 @@
 package com.talentboost.vmware.devices;
 
+import com.talentboost.vmware.ReturnMessage;
 import com.talentboost.vmware.interfaces.IDevice;
 
 /**
@@ -78,7 +79,7 @@ public class NetworkCardDevice implements IDevice {
 	 */
 	private void chechkID(String id) {
 		if (!id.matches("[A-Za-z0-9]+")) {
-			throw new IllegalArgumentException("The ID of the device should be only alphanumerical");
+			throw new IllegalArgumentException(ReturnMessage.getMessage("MSG_NETWORK_CARD_DEVICE_ALPHANUMERIC_ERROR_ID"));
 		}
 	}
 
@@ -95,7 +96,7 @@ public class NetworkCardDevice implements IDevice {
 	private void checkMAC(String macAddr) {
 		if (!macAddr.matches("^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$")) {
 			throw new IllegalArgumentException(
-					"The MAC address of the device should be in the format of \"HH-­HH-­HH-­HH-­HH-­HH\", where \"H\" is a hexadecimal number");
+					ReturnMessage.getMessage("MSG_NETWORK_CARD_DEVICE_ERROR_MAC"));
 		}
 
 	}
@@ -114,7 +115,7 @@ public class NetworkCardDevice implements IDevice {
 		if (ipAddr != null && !ipAddr.matches(
 				"^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])$")) {
 			throw new IllegalArgumentException(
-					"The IP address of the device should be in the format of \"A.B.C.D\", where A,B,C,D are numbers in range 0-255");
+					ReturnMessage.getMessage("MSG_NETWORK_CARD_DEVICE_ERROR_IP"));
 		}
 
 	}

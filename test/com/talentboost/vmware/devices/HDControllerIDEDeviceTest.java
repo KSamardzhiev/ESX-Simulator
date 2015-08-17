@@ -1,4 +1,4 @@
-package com.talentboost.vmware.test;
+package com.talentboost.vmware.devices;
 
 import static org.junit.Assert.*;
 
@@ -8,16 +8,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.talentboost.vmware.devices.HDControllerIDEDevice;
-import com.talentboost.vmware.devices.HDControllerSCSIDevice;
 import com.talentboost.vmware.devices.HardDiskDevice;
 
-public class HDControllerSCSIDeviceTest {
+public class HDControllerIDEDeviceTest {
 
-	HDControllerSCSIDevice hdController;
+	HDControllerIDEDevice hdController;
 
 	@Before
 	public void setUp() throws Exception {
-		hdController = new HDControllerSCSIDevice("1id1");
+		hdController = new HDControllerIDEDevice("1id1");
 	}
 
 	@Test
@@ -32,12 +31,12 @@ public class HDControllerSCSIDeviceTest {
 
 	@Test
 	public void testGetTypeController() {
-		assertEquals("SCSI", hdController.getControllerType());
+		assertEquals("IDE", hdController.getControllerType());
 	}
 
 	@Test
 	public void testToString() {
-		assertEquals("HardDisk_Controller 1id1 SCSI", hdController.toString());
+		assertEquals("HardDisk_Controller 1id1 IDE", hdController.toString());
 	}
 
 	@Test
@@ -68,9 +67,11 @@ public class HDControllerSCSIDeviceTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddHardDiskNegativeTooManyHardDisks() {
-		for (int i = 0; i < 17; i++) {
-			hdController.addHardDisk(new HardDiskDevice(String.valueOf(i),
-					"id3", 1234l));
-		}
+		hdController.addHardDisk(new HardDiskDevice("1id1", "id3", 1234l));
+		hdController.addHardDisk(new HardDiskDevice("1id2", "id3", 1234l));
+		hdController.addHardDisk(new HardDiskDevice("1id3", "id3", 1234l));
+		hdController.addHardDisk(new HardDiskDevice("1id4", "id3", 1234l));
+		hdController.addHardDisk(new HardDiskDevice("1id5", "id3", 1234l));
+
 	}
 }

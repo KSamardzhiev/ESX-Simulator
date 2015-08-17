@@ -1,5 +1,6 @@
 package com.talentboost.vmware.devices;
 
+import com.talentboost.vmware.ReturnMessage;
 import com.talentboost.vmware.interfaces.IDevice;
 
 /**
@@ -76,7 +77,7 @@ public class VideoCardDevice implements IDevice {
 	 */
 	private void checkID(String id) {
 		if (!id.matches("[A-Za-z0-9]+")) {
-			throw new IllegalArgumentException("The ID of the device should be only alphanumerical");
+			throw new IllegalArgumentException(ReturnMessage.getMessage("MSG_VIDEO_CARD_DEVICE_ALPHANUMERIC_ERROR_ID"));
 		}
 	}
 
@@ -91,7 +92,7 @@ public class VideoCardDevice implements IDevice {
 	 */
 	private void checkRAM(int videoRAM) {
 		if (videoRAM <= 0 || videoRAM > this.MAX_RAM) {
-			throw new IllegalArgumentException("The RAM of the device should be in range 1 - 4194304 KB ");
+			throw new IllegalArgumentException(ReturnMessage.getMessage("MSG_VIDEO_CARD_DEVICE_ERROR_RAM"));
 		}
 	}
 
@@ -107,7 +108,7 @@ public class VideoCardDevice implements IDevice {
 	 */
 	private void checkNumberOfDisplays(byte numberDisplays) {
 		if (numberDisplays <= 0 || numberDisplays > this.MAX_DISPLAYS) {
-			throw new IllegalArgumentException("The number of displays of the device should be in range 1 or 2");
+			throw new IllegalArgumentException(ReturnMessage.getMessage("MSG_VIDEO_CARD_DEVICE_ERROR_NUMBER_OF_DISPLAYS"));
 		}
 	}
 

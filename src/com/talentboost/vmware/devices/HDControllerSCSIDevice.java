@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.talentboost.vmware.ReturnMessage;
 import com.talentboost.vmware.interfaces.IDevice;
 import com.talentboost.vmware.interfaces.IHDController;
 
@@ -67,7 +68,7 @@ public class HDControllerSCSIDevice implements IHDController, IDevice {
 	 */
 	private void checkID(String id) {
 		if (!id.matches("[A-Za-z0-9]+")) {
-			throw new IllegalArgumentException("The ID of the device should be only alphanumerical");
+			throw new IllegalArgumentException(ReturnMessage.getMessage("MSG_HDC_SCSI_DEVICE_ALPHANUMERIC_ERROR_ID"));
 		}
 	}
 
@@ -89,7 +90,7 @@ public class HDControllerSCSIDevice implements IHDController, IDevice {
 		checkIDHardDisk(hardDisk.getID());
 		checkNumberOfHardDisks();
 		this.hardDisks.put(hardDisk.getID(), hardDisk);
-		return "Hard disk is added.";
+		return ReturnMessage.getMessage("MSG_HDC_SCSI_DEVICE_ADD_HARD_DISK_SUCCESS");
 	}
 
 	/**
@@ -103,7 +104,7 @@ public class HDControllerSCSIDevice implements IHDController, IDevice {
 	 */
 	private void checkIDHardDisk(String hardDiskID) {
 		if (this.hardDisks.containsKey(hardDiskID)) {
-			throw new IllegalArgumentException("Hard disk with this ID already existing.");
+			throw new IllegalArgumentException(ReturnMessage.getMessage("MSG_HDC_SCSI_DEVICE_ADD_HARD_DISK_ERROR_EXISTING_ID"));
 		}
 
 	}
@@ -120,7 +121,7 @@ public class HDControllerSCSIDevice implements IHDController, IDevice {
 	 */
 	private void checkNumberOfHardDisks() {
 		if (this.hardDisks.size() == this.MAX_NUMBER_HARD_DISK) {
-			throw new IllegalArgumentException("Hard disk controller have max number of hard disk attached");
+			throw new IllegalArgumentException(ReturnMessage.getMessage("MSG_HDC_SCSI_DEVICE_ADD_HARD_DISK_ERROR_MAX_NUMBER_OF_HARD_DISKS"));
 		}
 
 	}

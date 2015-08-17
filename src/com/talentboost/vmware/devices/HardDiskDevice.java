@@ -1,5 +1,6 @@
 package com.talentboost.vmware.devices;
 
+import com.talentboost.vmware.ReturnMessage;
 import com.talentboost.vmware.interfaces.IDevice;
 
 /**
@@ -65,7 +66,7 @@ public class HardDiskDevice implements IDevice {
 	 */
 	private void checkSize(long size) {
 		if (size <= 0 || size > this.MAXSIZE) {
-			throw new IllegalArgumentException("The size of the hard disk is incorrect.");
+			throw new IllegalArgumentException(ReturnMessage.getMessage("MSG_HARD_DISK_DEVICE_ERROR_SIZE"));
 		}
 
 	}
@@ -82,7 +83,7 @@ public class HardDiskDevice implements IDevice {
 	 */
 	private void checkIDController(String idController) {
 		if (!idController.matches("[A-Za-z0-9]+")) {
-			throw new IllegalArgumentException("The ID of the hard disk controller device could be only alphanumeric.");
+			throw new IllegalArgumentException(ReturnMessage.getMessage("MSG_HARD_DISK_DEVICE_ALPHANUMERIC_ERROR_CONTROLLER_ID"));
 		}
 
 	}
@@ -98,7 +99,7 @@ public class HardDiskDevice implements IDevice {
 	 */
 	private void chechID(String id) {
 		if (!id.matches("[A-Za-z0-9]+")) {
-			throw new IllegalArgumentException("The ID of the hard disk device could be only alphanumeric.");
+			throw new IllegalArgumentException(ReturnMessage.getMessage("MSG_HARD_DISK_DEVICE_ALPHANUMERIC_ERROR_ID"));
 		}
 	}
 
